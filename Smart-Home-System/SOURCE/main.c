@@ -5,4 +5,10 @@
  *      Author: HP
  */
 
+int main(void)
+{
+    while(1)
+    {
 
+    }
+}
