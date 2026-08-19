@@ -55,5 +55,7 @@ void MDIO_voidTogglePinValue(DIO_PORTS A_DIOPORT, DIO_PINS A_DIOPIN);
 void MDIO_voidSetPortDirection(DIO_PORTS A_DIOPORT, u8 A_u8PortDirection);
 void MDIO_voidSetPortValue(DIO_PORTS A_DIOPORT, u8 A_u8PortValue);
 
+PIN_STATUS MDIO_PinstatusGetPinValue(DIO_PORTS A_DIOPort, DIO_PINS A_DIOPIN);
+
 
 #endif /* INCLUDE_MCAL_DIO_DIO_INTERFACE_H_ */

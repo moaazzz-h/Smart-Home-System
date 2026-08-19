@@ -170,33 +170,24 @@ void MDIO_voidTogglePinValue(DIO_PORTS A_DIOPORT, DIO_PINS A_DIOPIN){
 }
 
 
-void MDIO_voidSetPortDirection(DIO_PORTS A_DIOPort, u8 A_u8PortDirection){
-	if((A_DIOPort <= PORTD) && (A_u8PortDirection <= DIO_OUTPUT)){
-		switch(A_DIOPort){
+void MDIO_voidSetPortDirection(DIO_PORTS A_DIOPORT, u8 A_u8PortDirection){
+	if((A_DIOPORT <= PORTD) && (A_u8PortDirection <= DIO_OUTPUT)){
+		switch(A_DIOPORT){
 		case PORTA:
-			switch(A_u8PortDirection){
-			case DIO_OUTPUT: SET_BYTE(DDRA_REG,0XFF); break;
-			case DIO_INPUT: SET_BYTE(DDRA_REG,0X00); break; }
+			SET_BYTE(PORTA_REG,A_u8PortDirection);
 			break ;
 		case PORTB:
-			switch(A_u8PortDirection){
-			case DIO_OUTPUT: SET_BYTE(DDRB_REG,0XFF); break;
-			case DIO_INPUT: SET_BYTE(DDRB_REG,0X00); break; }
+			SET_BYTE(PORTB_REG,A_u8PortDirection);
 			break ;
-
 		case PORTC:
-			switch(A_u8PortDirection){
-			case DIO_OUTPUT: SET_BYTE(DDRC_REG,0XFF); break;
-			case DIO_INPUT: SET_BYTE(DDRC_REG,0X00); break; }
+			SET_BYTE(PORTC_REG,A_u8PortDirection);
 			break ;
 		case PORTD:
-			switch(A_u8PortDirection){
-			case DIO_OUTPUT: SET_BYTE(DDRD_REG,0XFF); break;
-			case DIO_INPUT: SET_BYTE(DDRD_REG,0X00); break; }
+			SET_BYTE(PORTD_REG,A_u8PortDirection);
 			break ;
 		default:
 			break ;
-}}
+		}}
 }
 
 
@@ -221,3 +212,23 @@ void MDIO_voidSetPortValue(DIO_PORTS A_DIOPORT, u8 A_u8PortValue){
 	}
 }
 
+PIN_STATUS MDIO_PinstatusGetPinValue(DIO_PORTS A_DIOPort, DIO_PINS A_DIOPIN)
+{
+    PIN_STATUS PIN_VALUE;
+    if((A_DIOPort <= PORTD) && (A_DIOPIN <= PIN7) )
+    {
+        switch(A_DIOPort)
+        {
+            case PORTA: PIN_VALUE = GET_BIT(PORTA_REG,A_DIOPIN);break;
+
+            case PORTB: PIN_VALUE = GET_BIT(PORTB_REG,A_DIOPIN);break;
+
+            case PORTC: PIN_VALUE = GET_BIT(PORTC_REG,A_DIOPIN);break;
+
+            case PORTD: PIN_VALUE = GET_BIT(PORTD_REG,A_DIOPIN);break;
+
+            default: break;
+        }
+    }
+    return PIN_VALUE;
+}
