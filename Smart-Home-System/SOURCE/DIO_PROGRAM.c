@@ -197,6 +197,7 @@ void MDIO_voidSetPortDirection(DIO_PORTS A_DIOPort, u8 A_u8PortDirection){
 		default:
 			break ;
 }}
+}
 
 
 void MDIO_voidSetPortValue(DIO_PORTS A_DIOPORT, u8 A_u8PortValue){
