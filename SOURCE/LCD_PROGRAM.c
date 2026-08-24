@@ -23,15 +23,15 @@ void HLCD_voidInit(void)
 	//FUNCTION Set Command
 	HLCD_voidSendCommand(FUNCTION_SET);
 	//wait for more than 39 us
-	_delay_ms(1);
+	_delay_ms(30);
 	//Display on/off control
 	HLCD_voidSendCommand(DISPLAY_ON_OFF_CONTROL);
 	//wait for more than 39 us
-	_delay_ms(1);
+	_delay_ms(30);
 	//Display Clear
 	HLCD_voidSendCommand(DISPLAY_CLEAR);
 	//wait for more than 1.53 ms
-	_delay_ms(2);
+	_delay_ms(30);
 	//Entry Mode Set
 	HLCD_voidSendCommand(ENTRY_MODE_SET);
 
@@ -98,7 +98,7 @@ void HLCD_voidGoToPos(LCD_ROWS A_LcdRowNo , LCD_COLS  A_LcdColNo)
 	_delay_ms(1);
 }
 
-void HLCD_voidDisplayNumberUNSigned(u32 A_u32Number)
+void HLCD_voidDisplayNumber(u32 A_u32Number)
 {
 	u32 local_u32Number=1;
 	if(A_u32Number==0)
@@ -110,7 +110,7 @@ void HLCD_voidDisplayNumberUNSigned(u32 A_u32Number)
 		local_u32Number = ((local_u32Number*10)+(A_u32Number %10));
 		A_u32Number/=10;
 	}
-	while(A_u32Number != 1)
+	while(local_u32Number != 1)
 	{
 		HLCD_voidSendData((local_u32Number%10)+48);
 		local_u32Number/=10;

@@ -16,7 +16,7 @@
 #include "../INCLUDE/MCAL/DIO/DIO_PRIVATE.h"
 #include "../INCLUDE/MCAL/DIO/DIO_CFG.h"
 
-void MDIO_voidInit()
+void MDIO_voidInit(void)
 {
     DDRA_REG = CONC_BIT( PORTA_PIN7_DIRECTION,PORTA_PIN6_DIRECTION,
                          PORTA_PIN5_DIRECTION,PORTA_PIN4_DIRECTION,
@@ -219,13 +219,13 @@ PIN_STATUS MDIO_PinstatusGetPinValue(DIO_PORTS A_DIOPort, DIO_PINS A_DIOPIN)
     {
         switch(A_DIOPort)
         {
-            case PORTA: PIN_VALUE = GET_BIT(PORTA_REG,A_DIOPIN);break;
+            case PORTA: PIN_VALUE = GET_BIT(PINA_REG,A_DIOPIN);break;
 
-            case PORTB: PIN_VALUE = GET_BIT(PORTB_REG,A_DIOPIN);break;
+            case PORTB: PIN_VALUE = GET_BIT(PINB_REG,A_DIOPIN);break;
 
-            case PORTC: PIN_VALUE = GET_BIT(PORTC_REG,A_DIOPIN);break;
+            case PORTC: PIN_VALUE = GET_BIT(PINC_REG,A_DIOPIN);break;
 
-            case PORTD: PIN_VALUE = GET_BIT(PORTD_REG,A_DIOPIN);break;
+            case PORTD: PIN_VALUE = GET_BIT(PIND_REG,A_DIOPIN);break;
 
             default: break;
         }

@@ -17,10 +17,12 @@
 #define ROW_NO 4
 #define COL_NO 4
 
-u8 Global_u8ArrOfKeyValue[ROW_NO][COL_NO] ={ {'1','2','3','+'},
-											 {'4','5','6','-'},
-											 {'7','8','9','*'},
-											 {'C','0','=','/'}};
+static u8 Global_u8ArrOfKeyValue[4][4] = {
+	    {'7', '8', '9', '/'},
+	    {'4', '5', '6', '*'},
+	    {'1', '2', '3', '-'},
+	    {'C', '0', '=', '+'}
+	};
 
 
 #define KEYPAD_PORT   PORTA

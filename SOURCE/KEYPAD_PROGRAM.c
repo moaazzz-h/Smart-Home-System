@@ -13,7 +13,9 @@
 #include "../INCLUDE/HAL/KEYPAD/KEYPAD_PRIVATE.h"
 #include "../INCLUDE/HAL/KEYPAD/KEYPAD_CFG.h"
 
-void KPAD_voidInit (void){
+
+
+void KEPAD_voidInit(void){
 
 	u8 Local_u8Iterator;
 
