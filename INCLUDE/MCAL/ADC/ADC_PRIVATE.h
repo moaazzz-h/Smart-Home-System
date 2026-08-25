@@ -8,13 +8,12 @@
 #ifndef INCLUDE_MCAL_ADC_ADC_PRIVATE_H_
 #define INCLUDE_MCAL_ADC_ADC_PRIVATE_H_
 
-#define ADMUX_REG   (*(volatile unsigned char*)0x27)
-#define ADCSRA_REG  (*(volatile unsigned char*)0x26)
-#define ADCH_REG    (*(volatile unsigned char*)0x25)
-#define ADCL_REG    (*(volatile unsigned char*)0x24)
-#define ADC_DATA    (*(volatile unsigned short*)0x24)
+#define ADMUX_REG   (*(volatile u8*)0x27)
+#define ADCSRA_REG  (*(volatile u8*)0x26)
+#define ADCH_REG    (*(volatile u8*)0x25)
+#define ADCL_REG    (*(volatile u8*)0x24)
 
-//ADMUX
+/* ADMUX */
 #define MUX0    0
 #define MUX1    1
 #define MUX2    2
@@ -23,7 +22,8 @@
 #define ADLAR   5
 #define REFS0   6
 #define REFS1   7
-//ADCSRA
+
+/* ADCSRA */
 #define ADPS0   0
 #define ADPS1   1
 #define ADPS2   2
