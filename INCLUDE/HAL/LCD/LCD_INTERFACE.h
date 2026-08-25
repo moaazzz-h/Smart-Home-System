@@ -37,8 +37,8 @@ void HLCD_voidInit(void);
 void HLCD_voidSendString(u8 *A_Pu8String);
 void HLCD_voidClearDisplay(void);
 void HLCD_voidSendSpecialCharacter (u8 *A_pu8PatternArr, u8 A_u8PatternNumber,LCD_ROWS A_LcdRowNo,LCD_COLS A_LcdColNo );
-void HLCD_voidDisplayNumber (u32 A_u32Number);
-void HLCD_voidDisplayNumberSigned(s32 A_s32Number);
+void HLCD_voidDisplayNumberUNSigned (u32 A_u32Number);
+void HLCD_voidDisplayNumberSigned (s32 A_s32Number);
 void HLCD_voidGoToPos (LCD_ROWS A_LcdRowNo,LCD_COLS A_LcdColNo);
 
 

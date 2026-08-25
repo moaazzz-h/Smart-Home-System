@@ -2,8 +2,9 @@
  * GIE_PROGRAM.c
  *
  *  Created on: Aug 24, 2026
- *      Author: DELL
+ *      Author: HP
  */
+
 
 #include "../INCLUDE/LIB/BIT_MATH.h"
 #include "../INCLUDE/LIB/STD_TYPES.h"

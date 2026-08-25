@@ -16,7 +16,7 @@
 #include "../INCLUDE/MCAL/DIO/DIO_PRIVATE.h"
 #include "../INCLUDE/MCAL/DIO/DIO_CFG.h"
 
-void MDIO_voidInit(void)
+void MDIO_voidInit()
 {
     DDRA_REG = CONC_BIT( PORTA_PIN7_DIRECTION,PORTA_PIN6_DIRECTION,
                          PORTA_PIN5_DIRECTION,PORTA_PIN4_DIRECTION,

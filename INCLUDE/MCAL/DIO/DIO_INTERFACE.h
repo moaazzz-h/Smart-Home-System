@@ -47,7 +47,7 @@ typedef enum{
 
 } PIN_INPUT_MODE;
 
-void MDIO_voidInit(void);
+void MDIO_voidInit();
 void MDIO_voidSetPinDirection(DIO_PORTS A_DIOPORT, DIO_PINS A_DIOPIN, PIN_DIRECTION A_PinDirection);
 void MDIO_voidSetPinValue(DIO_PORTS A_DIOPORT,DIO_PINS A_DIOPIN,PIN_STATUS A_PinValue);
 void MDIO_voidTogglePinValue(DIO_PORTS A_DIOPORT, DIO_PINS A_DIOPIN);

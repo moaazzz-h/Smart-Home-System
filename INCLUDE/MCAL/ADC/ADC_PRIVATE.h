@@ -2,7 +2,7 @@
  * ADC_PRIVATE.h
  *
  *  Created on: Aug 24, 2026
- *      Author: DELL
+ *      Author: HP
  */
 
 #ifndef INCLUDE_MCAL_ADC_ADC_PRIVATE_H_

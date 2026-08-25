@@ -1,15 +1,15 @@
 /*
  * KEYPAD_INTERFACE.h
  *
- *  Created on: Aug 21, 2026
- *      Author: DELL
+ *  Created on: Aug 20, 2026
+ *      Author: HP
  */
 
 #ifndef INCLUDE_HAL_KEYPAD_KEYPAD_INTERFACE_H_
 #define INCLUDE_HAL_KEYPAD_KEYPAD_INTERFACE_H_
 
-
 u8 HKEYPAD_u8GetPressedKey(void);
-void KEPAD_voidInit(void);
+void KPAD_voidInit(void);
+
 
 #endif /* INCLUDE_HAL_KEYPAD_KEYPAD_INTERFACE_H_ */

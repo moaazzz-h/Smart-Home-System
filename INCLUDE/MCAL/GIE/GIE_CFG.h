@@ -2,7 +2,7 @@
  * GIE_CFG.h
  *
  *  Created on: Aug 24, 2026
- *      Author: DELL
+ *      Author: HP
  */
 
 #ifndef INCLUDE_MCAL_GIE_GIE_CFG_H_

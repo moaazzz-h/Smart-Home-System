@@ -1,9 +1,6 @@
-/*
- * ADC_PROGRAM.c
- *
- *  Created on: Aug 25, 2026
- *      Author: DELL
- */
+
+// DIO Directives
+
 #include "../INCLUDE/LIB/BIT_MATH.h"
 #include "../INCLUDE/LIB/STD_TYPES.h"
 

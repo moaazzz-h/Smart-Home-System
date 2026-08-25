@@ -1,9 +1,3 @@
-/*
- * KEYPAD_PROGRAM.c
- *
- *  Created on: Aug 21, 2026
- *      Author: DELL
- */
 #include <util/delay.h>
 #include "../INCLUDE/LIB/STD_TYPES.h"
 #include "../INCLUDE/LIB/BIT_MATH.h"
@@ -13,9 +7,7 @@
 #include "../INCLUDE/HAL/KEYPAD/KEYPAD_PRIVATE.h"
 #include "../INCLUDE/HAL/KEYPAD/KEYPAD_CFG.h"
 
-
-
-void KEPAD_voidInit(void){
+void KPAD_voidInit (void){
 
 	u8 Local_u8Iterator;
 
@@ -75,7 +67,3 @@ u8 HKEYPAD_u8GetPressedKey(void){
 
 	    return Local_u8PressedKey;
 	}
-
-
-
-

@@ -1,10 +1,3 @@
-/*
- * KEYPAD_CFG.h
- *
- *  Created on: Aug 21, 2026
- *      Author: DELL
- */
-
 #ifndef INCLUDE_HAL_KEYPAD_KEYPAD_CFG_H_
 #define INCLUDE_HAL_KEYPAD_KEYPAD_CFG_H_
 
@@ -17,15 +10,14 @@
 #define ROW_NO 4
 #define COL_NO 4
 
-static u8 Global_u8ArrOfKeyValue[4][4] = {
-	    {'7', '8', '9', '/'},
-	    {'4', '5', '6', '*'},
-	    {'1', '2', '3', '-'},
-	    {'C', '0', '=', '+'}
-	};
+u8 Global_u8ArrOfKeyValue[ROW_NO][COL_NO] = {
+    {'7','8','9','/'},
+    {'4','5','6','*'},
+    {'1','2','3','-'},
+    {'C','0','=','+'}
+};
 
-
-#define KEYPAD_PORT   PORTA
+#define KEYPAD_PORT   PORTB
 
 #define ROW0  PIN0
 #define ROW1  PIN1

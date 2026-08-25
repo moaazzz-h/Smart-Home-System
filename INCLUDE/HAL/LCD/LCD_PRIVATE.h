@@ -21,4 +21,3 @@
 
 
 #endif /* INCLUDE_HAL_LCD_LCD_PRIVATE_H_ */
-
