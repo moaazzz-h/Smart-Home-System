@@ -18,6 +18,6 @@
 #define ADC_Channel_7   7
 
 void MADC_voidInit(void);
-unsigned short MADC_u16ReadSync(unsigned char u8_CopyChannel);
+u16 MADC_u16ReadSync(u8 u8_CopyChannel);
 
 #endif /* INCLUDE_MCAL_ADC_ADC_INTERFACE_H_ */
