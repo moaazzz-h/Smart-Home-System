@@ -26,7 +26,7 @@ void MADC_voidInit(void) {
     SET_BIT(ADCSRA_REG, ADEN);
 }
 
-unsigned short ADC_u16ReadSync(unsigned char u8_CopyChannel) {
+u16 ADC_u16ReadSync(unsigned char u8_CopyChannel) {
 
     ADMUX_REG &= 0xE0;
     ADMUX_REG |= (u8_CopyChannel & 0x1F);
