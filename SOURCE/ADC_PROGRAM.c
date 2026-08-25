@@ -12,7 +12,7 @@
 #include "../INCLUDE/MCAL/ADC/ADC_INTERFACE.h"
 #include "../INCLUDE/MCAL/ADC/ADC_PRIVATE.h"
 #include "../INCLUDE/MCAL/ADC/ADC_CFG.h"
-void ADC_voidInit(void) {
+void MADC_voidInit(void) {
 
     CLR_BIT(ADMUX_REG, REFS0);
     CLR_BIT(ADMUX_REG, REFS1);
