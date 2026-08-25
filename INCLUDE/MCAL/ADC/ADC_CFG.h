@@ -10,7 +10,7 @@
 
 #define ADC_AREF        0
 #define ADC_AVCC        1
-#define ADC_INTERNAL    2
+#define ADC_INTERNAL    3
 
 #define ADC_VREF_MODE   ADC_AVCC
 
