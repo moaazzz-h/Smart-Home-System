@@ -14,6 +14,7 @@
 #define ADCL_REG    (*(volatile unsigned char*)0x24)
 #define ADC_DATA    (*(volatile unsigned short*)0x24)
 
+//ADMUX
 #define MUX0    0
 #define MUX1    1
 #define MUX2    2
@@ -22,7 +23,7 @@
 #define ADLAR   5
 #define REFS0   6
 #define REFS1   7
-
+//ADCSRA
 #define ADPS0   0
 #define ADPS1   1
 #define ADPS2   2
