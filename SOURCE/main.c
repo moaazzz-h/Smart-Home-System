@@ -13,12 +13,8 @@
 #include "../INCLUDE/HAL/BUZZER/BUZZER_INTERFACE.h"
 
 
-
-
 int main(void)
 {
-
-
     u8 Local_u8PasswordState;
     u8 Local_u8Selection;
     u8 Local_u8Attempts = 0;
@@ -30,15 +26,8 @@ int main(void)
     HBUZZER_voidInit();
 
 
-
-
-    while (1)
+    while(1)
     {
-
-
-
-    }
-
         Local_u8PasswordState = HPASSWORD_u8CheckPassword();
 
 
@@ -117,7 +106,7 @@ int main(void)
                 Local_u8Attempts = 0;
             }
         }
-
+    }
 
 
     return 0;
