@@ -1,10 +1,10 @@
 #include "../INCLUDE/LIB/STD_TYPES.h"
 #include "../INCLUDE/LIB/BIT_MATH.h"
 
-#include "../DIO/DIO_INTERFACE.h"
-#include "PWM_interface.h"
-#include "PWM_private.h"
-#include "PWM_config.h"
+#include "../INCLUDE/MCAL/DIO/DIO_INTERFACE.h"
+#include "../INCLUDE/MCAL/PWM/PWM_interface.h"
+#include "../INCLUDE/MCAL/PWM/PWM_private.h"
+#include "../INCLUDE/MCAL/PWM/PWM_config.h"
 
 static u32 G_u32TopValue = 20000; // Default Top Value (ICR1)
 
