@@ -62,6 +62,52 @@ void MTIMER0_voidInit(void)
     TCCR0 &= ~0b00000111;
     TCCR0 |= TIMER0_CLK_CFG;
 
+
+#elif TIMER0_MODE == PHASE_CORRECT_MODE
+
+    CLR_BIT(TCCR0, 3);
+    SET_BIT(TCCR0, 6);
+
+    TCCR0 &= ~0b00110000;
+
+#if TIMER0_PWM_MODE == NON_INVERTING_PWM
+
+    SET_BIT(TCCR0, 5);
+    CLR_BIT(TCCR0, 4);
+
+#elif TIMER0_PWM_MODE == INVERTING_PWM
+
+    SET_BIT(TCCR0, 5);
+    SET_BIT(TCCR0, 4);
+
+#endif
+
+    TCCR0 &= ~0b00000111;
+    TCCR0 |= TIMER0_CLK_CFG;
+
+
+#elif TIMER0_MODE == FAST_PWM_MODE
+
+    SET_BIT(TCCR0, 3);
+    SET_BIT(TCCR0, 6);
+
+    TCCR0 &= ~0b00110000;
+
+#if TIMER0_PWM_MODE == NON_INVERTING_PWM
+
+    SET_BIT(TCCR0, 5);
+    CLR_BIT(TCCR0, 4);
+
+#elif TIMER0_PWM_MODE == INVERTING_PWM
+
+    SET_BIT(TCCR0, 5);
+    SET_BIT(TCCR0, 4);
+
+#endif
+
+    TCCR0 &= ~0b00000111;
+    TCCR0 |= TIMER0_CLK_CFG;
+
 #endif
 }
 
@@ -106,19 +152,19 @@ void __vector_11(void) __attribute__((signal));
 
 void __vector_11(void)
 {
-    if (TIMER0_OVF_CALLBACK != NULL)
+    if (TIMER0_CTC_CALLBACK != NULL)
     {
-        TIMER0_OVF_CALLBACK();
+        TIMER0_CTC_CALLBACK();
     }
 }
 
 
-void __vector_10(void) __attribute__((signal));
+void __vector_12(void) __attribute__((signal));
 
-void __vector_10(void)
+void __vector_12(void)
 {
-    if (TIMER0_CTC_CALLBACK != NULL)
+    if (TIMER0_OVF_CALLBACK != NULL)
     {
-        TIMER0_CTC_CALLBACK();
+        TIMER0_OVF_CALLBACK();
     }
 }

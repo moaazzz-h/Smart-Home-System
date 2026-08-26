@@ -86,14 +86,30 @@ void HLCD_voidClearDisplay(void)
 	_delay_ms(2);
 }
 
-void HLCD_voidGoToPos(LCD_ROWS A_LcdRowNo , LCD_COLS  A_LcdColNo)
+void HLCD_voidGoToPos(LCD_ROWS A_LcdRowNo, LCD_COLS A_LcdColNo)
 {
 	switch(A_LcdRowNo)
 	{
-	case ROW1: HLCD_voidSendCommand(LCD_ROW1_ADDRESS + A_LcdColNo); break;
-	case ROW2: HLCD_voidSendCommand(LCD_ROW2_ADDRESS + A_LcdColNo); break;
-	default: break;
+	case ROW1:
+		HLCD_voidSendCommand(LCD_ROW1_ADDRESS + A_LcdColNo);
+		break;
+
+	case ROW2:
+		HLCD_voidSendCommand(LCD_ROW2_ADDRESS + A_LcdColNo);
+		break;
+
+	case ROW3:
+		HLCD_voidSendCommand(LCD_ROW3_ADDRESS + A_LcdColNo);
+		break;
+
+	case ROW4:
+		HLCD_voidSendCommand(LCD_ROW4_ADDRESS + A_LcdColNo);
+		break;
+
+	default:
+		break;
 	}
+
 	_delay_ms(1);
 }
 

@@ -1,14 +1,12 @@
 /*
- * TIMER_INTERFACE.h
+ * TIME_INTERFACE.h
  *
  *  Created on: Aug 25, 2026
  *      Author: HP
  */
 
-#ifndef INCLUDE_MCAL_TIMER_TIMER_INTERFACE_H_
-#define INCLUDE_MCAL_TIMER_TIMER_INTERFACE_H_
-
-/* Timer0 Modes */
+#ifndef APP_INCLUDE_MCAL_TIMER0_TIMER0_INTERFACE_H_
+#define APP_INCLUDE_MCAL_TIMER0_TIMER0_INTERFACE_H_
 
 #define NORMAL_MODE         0
 #define PHASE_CORRECT_MODE  1
@@ -22,6 +20,12 @@
 #define TOGGLE_CTC          1
 #define CLR_CTC             2
 #define SET_CTC             3
+
+
+/* PWM Compare Output Modes */
+
+#define NON_INVERTING_PWM   2
+#define INVERTING_PWM       3
 
 
 /* Timer0 Functions */
@@ -38,5 +42,4 @@ void MTIMER0_voidSetOVFCallback(void (*A_PtrToFunc)(void));
 
 void MTIMER0_voidSetCTCCallback(void (*A_PtrToFunc)(void));
 
-
-#endif /* INCLUDE_MCAL_TIMER_TIMER_INTERFACE_H_ */
+#endif /* APP_INCLUDE_MCAL_TIMER0_TIMER0_INTERFACE_H_ */

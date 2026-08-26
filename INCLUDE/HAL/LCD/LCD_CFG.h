@@ -8,8 +8,8 @@
 #ifndef INCLUDE_HAL_LCD_LCD_CFG_H_
 #define INCLUDE_HAL_LCD_LCD_CFG_H_
 
-#define LCD_DATA_PORT 			PORTD
-#define LCD_CONTROL_PORT    	PORTC
+#define LCD_DATA_PORT 			PORTC
+#define LCD_CONTROL_PORT    	PORTD
 
 #define LCD_RS_PIN 	        	PIN0
 #define LCD_RW_PIN 				PIN1
@@ -17,7 +17,7 @@
 
 // 0 --> 1 Line
 // 1 --> 2 Line
-#define LCD_NO_OF_LINES 		1
+#define LCD_NO_OF_LINES 1
 // 0 --> 8 BIT MODE
 // 1 --> 4 BIT MODE
 #define LCD_DL 1

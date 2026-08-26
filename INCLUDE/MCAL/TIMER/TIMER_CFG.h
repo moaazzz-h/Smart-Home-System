@@ -20,7 +20,7 @@ Ob111 External clock source on T0 pin. Clock on rising edge.
 
 #define TIMER0_CTC_MODE    NORMAL_DIO_PIN
 
-#define TIMER0_PWM_MODE    CLR_CTC
+#define TIMER0_PWM_MODE    NON_INVERTING_PWM
 
 #define NULL    0
 

@@ -19,7 +19,7 @@
 
 /* Timer0 Callback Functions */
 
-extern void (*TIMER0_OVF_CALLBACK)(void);
-extern void (*TIMER0_CTC_CALLBACK)(void);
+void (*TIMER0_OVF_CALLBACK)(void);
+void (*TIMER0_CTC_CALLBACK)(void);
 
 #endif /* INCLUDE_MCAL_TIMER_TIMER_PRIVATE_H_ */
