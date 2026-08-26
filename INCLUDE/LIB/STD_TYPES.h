@@ -7,7 +7,7 @@
 
 #ifndef INCLUDE_LIB_STD_TYPES_H_
 #define INCLUDE_LIB_STD_TYPES_H_
-
+#define NULL    0
 typedef unsigned char          u8;     // 1 byte = 8 bits
 typedef signed char            s8;     // 1 byte = 8 bits
 

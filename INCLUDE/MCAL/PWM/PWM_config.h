@@ -1,0 +1,10 @@
+#ifndef INCLUDE_MCAL_PWM_PWM_CONFIG_H_
+#define INCLUDE_MCAL_PWM_PWM_CONFIG_H_
+
+/* Channel Selection Options:
+ * 1. PWM_CHANNEL_A  (Pin PD5 / OC1A)
+ * 2. PWM_CHANNEL_B  (Pin PD4 / OC1B)
+ */
+#define PWM_DEFAULT_CHANNEL    PWM_CHANNEL_A
+
+#endif /* INCLUDE_MCAL_PWM_PWM_CONFIG_H_ */
