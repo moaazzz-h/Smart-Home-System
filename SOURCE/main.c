@@ -12,33 +12,41 @@
 #include "../INCLUDE/HAL/LDR/LDR_INTERFACE.h"
 
 
+
+
 int main(void)
 {
-    u8 Local_u8LightLevel;
+	MDIO_voidInit();
 
-    /* Initialize MCAL */
-    MDIO_voidInit();
-    MADC_voidInit();
+    HSERVO_voidInit();
 
-    /* Initialize LCD */
-    HLCD_voidInit();
+    /* اختبار 1: نقاط ثابتة للتأكد إن كل زاوية بتوصل صح */
+    HSERVO_voidSetAngle(0);
+    _delay_ms(1000);
 
-    while(1)
+    HSERVO_voidSetAngle(90);
+    _delay_ms(1000);
+
+    HSERVO_voidSetAngle(180);
+    _delay_ms(1000);
+
+    while (1)
     {
-        /* Read LDR and convert ADC value to percentage */
-        Local_u8LightLevel = HLDR_u8GetLightLevel();
+        /* اختبار 2: مسح كامل (Sweep) من 0 لـ180 بالتدريج */
+        u8 Local_u8Angle;
 
-        /* Display Light Level */
-        HLCD_voidGoToPos(ROW1, col1);
+        for (Local_u8Angle = 0; Local_u8Angle <= 180; Local_u8Angle++)
+        {
+            HSERVO_voidSetAngle(Local_u8Angle);
+            _delay_ms(15);
+        }
+        _delay_ms(500);
 
-        HLCD_voidSendString("Light = ");
-
-        HLCD_voidDisplayNumberUNSigned(Local_u8LightLevel);
-
-        HLCD_voidSendString("%   ");
-
-        _delay_ms(300);
+        for (Local_u8Angle = 180; Local_u8Angle > 0; Local_u8Angle--)
+        {
+            HSERVO_voidSetAngle(Local_u8Angle);
+            _delay_ms(15);
+        }
+        _delay_ms(500);
     }
-
-    return 0;
 }

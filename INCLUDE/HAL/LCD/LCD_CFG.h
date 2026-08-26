@@ -8,8 +8,8 @@
 #ifndef INCLUDE_HAL_LCD_LCD_CFG_H_
 #define INCLUDE_HAL_LCD_LCD_CFG_H_
 
-#define LCD_DATA_PORT 			PORTD
-#define LCD_CONTROL_PORT    	PORTC
+#define LCD_DATA_PORT 			PORTC
+#define LCD_CONTROL_PORT    	PORTD
 
 #define LCD_RS_PIN 	        	PIN0
 #define LCD_RW_PIN 				PIN1
