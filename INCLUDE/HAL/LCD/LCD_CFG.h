@@ -17,7 +17,7 @@
 
 // 0 --> 1 Line
 // 1 --> 2 Line
-#define LCD_NO_OF_LINES 		1
+#define LCD_NO_OF_LINES 1
 // 0 --> 8 BIT MODE
 // 1 --> 4 BIT MODE
 #define LCD_DL 1

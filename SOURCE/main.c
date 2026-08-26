@@ -1,52 +1,125 @@
 #include <util/delay.h>
 
 #include "../INCLUDE/LIB/STD_TYPES.h"
-#include "../INCLUDE/LIB/BIT_MATH.h"
 
 // MCAL
 #include "../INCLUDE/MCAL/DIO/DIO_INTERFACE.h"
-#include "../INCLUDE/MCAL/ADC/ADC_INTERFACE.h"
 
 // HAL
 #include "../INCLUDE/HAL/LCD/LCD_INTERFACE.h"
-#include "../INCLUDE/HAL/LDR/LDR_INTERFACE.h"
+#include "../INCLUDE/HAL/KEYPAD/KEYPAD_INTERFACE.h"
+#include "../INCLUDE/HAL/PASSWORD/PASSWORD_INTERFACE.h"
+#include "../INCLUDE/HAL/MENU/MENU_INTERFACE.h"
+#include "../INCLUDE/HAL/BUZZER/BUZZER_INTERFACE.h"
 
 
 
 
 int main(void)
 {
-	MDIO_voidInit();
 
-    HSERVO_voidInit();
 
-    /* اختبار 1: نقاط ثابتة للتأكد إن كل زاوية بتوصل صح */
-    HSERVO_voidSetAngle(0);
-    _delay_ms(1000);
+    u8 Local_u8PasswordState;
+    u8 Local_u8Selection;
+    u8 Local_u8Attempts = 0;
 
-    HSERVO_voidSetAngle(90);
-    _delay_ms(1000);
 
-    HSERVO_voidSetAngle(180);
-    _delay_ms(1000);
+    MDIO_voidInit();
+    HLCD_voidInit();
+    KPAD_voidInit();
+    HBUZZER_voidInit();
+
+
+
 
     while (1)
     {
-        /* اختبار 2: مسح كامل (Sweep) من 0 لـ180 بالتدريج */
-        u8 Local_u8Angle;
 
-        for (Local_u8Angle = 0; Local_u8Angle <= 180; Local_u8Angle++)
-        {
-            HSERVO_voidSetAngle(Local_u8Angle);
-            _delay_ms(15);
-        }
-        _delay_ms(500);
 
-        for (Local_u8Angle = 180; Local_u8Angle > 0; Local_u8Angle--)
-        {
-            HSERVO_voidSetAngle(Local_u8Angle);
-            _delay_ms(15);
-        }
-        _delay_ms(500);
+
     }
+
+        Local_u8PasswordState = HPASSWORD_u8CheckPassword();
+
+
+        if(Local_u8PasswordState == PASSWORD_CORRECT)
+        {
+            Local_u8Attempts = 0;
+
+            Local_u8Selection = HMENU_u8GetSelection();
+
+            HLCD_voidClearDisplay();
+
+            switch(Local_u8Selection)
+            {
+                case MENU_LIGHTS:
+                    HLCD_voidSendString("Lights Selected");
+                    break;
+
+                case MENU_TEMPERATURE:
+                    HLCD_voidSendString("Temp Selected");
+                    break;
+
+                case MENU_SECURITY:
+                    HLCD_voidSendString("Security Selected");
+                    break;
+
+                case MENU_SYSTEM_INFO:
+                    HLCD_voidSendString("System Info");
+                    break;
+
+                default:
+                    break;
+            }
+
+            _delay_ms(1000);
+        }
+
+
+        else
+        {
+            Local_u8Attempts++;
+
+
+            HBUZZER_voidBeep();
+
+
+
+
+            HLCD_voidClearDisplay();
+
+            HLCD_voidGoToPos(ROW1, col1);
+            HLCD_voidSendString("Wrong Password");
+
+            HLCD_voidGoToPos(ROW2, col1);
+            HLCD_voidSendString("Attempt: ");
+
+            HLCD_voidDisplayNumberUNSigned(Local_u8Attempts);
+
+
+            _delay_ms(1000);
+
+
+            if(Local_u8Attempts >= PASSWORD_MAX_ATTEMPTS)
+            {
+                HLCD_voidClearDisplay();
+
+                HLCD_voidGoToPos(ROW1, col1);
+                HLCD_voidSendString("Access Denied");
+
+
+
+                for(u8 Local_u8Counter = 0 ; Local_u8Counter < 5 ; Local_u8Counter++){
+                	HBUZZER_voidBeep();
+                	_delay_ms(200);
+                }
+
+                Local_u8Attempts = 0;
+            }
+        }
+
+
+
+    return 0;
+
 }
