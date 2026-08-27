@@ -16,12 +16,13 @@
 #include "../INCLUDE/HAL/FAN/FAN_INTERFACE.h"
 #include "../INCLUDE/HAL/LIGHT/LIGHT_INTERFACE.h"
 #include "../INCLUDE/APP/AUTO/AUTO_INTERFACE.h"
+#include "../INCLUDE/APP/MANUAL/MANUAL_INTERFACE.h"
+
 
 int main(void)
 {
     u8 Local_u8User;
     u8 Local_u8PasswordState;
-    u8 Local_u8Selection;
     u8 Local_u8Mode;
     u8 Local_u8Attempts = 0;
 
@@ -68,74 +69,40 @@ int main(void)
 
             Local_u8Mode = HMENU_u8GetMode();
 
-
-            if(Local_u8Mode == MODE_AUTO)
+            while(Local_u8Mode != MODE_LOGOUT)
             {
-                HLCD_voidClearDisplay();
-
-                HLCD_voidGoToPos(ROW1, col1);
-                HLCD_voidSendString((u8*)"Auto Mode");
-
-                HLCD_voidGoToPos(ROW2, col1);
-                HLCD_voidSendString((u8*)"System Running");
-
-                _delay_ms(1000);
-
-                HAUTO_voidRun();
-
-            }
-
-
-            /* MANUAL MODE */
-
-            else if(Local_u8Mode == MODE_MANUAL)
-            {
-                Local_u8Selection = HMENU_u8GetSelection();
-
-                HLCD_voidClearDisplay();
-
-                switch(Local_u8Selection)
+                if(Local_u8Mode == MODE_AUTO)
                 {
-                    case MENU_LIGHTS:
+                    HLCD_voidClearDisplay();
 
-                        HLCD_voidSendString((u8*)"Lights Selected");
+                    HLCD_voidGoToPos(ROW1, col1);
+                    HLCD_voidSendString((u8*)"Auto Mode");
 
-                        break;
+                    HLCD_voidGoToPos(ROW2, col1);
+                    HLCD_voidSendString((u8*)"System Running");
 
+                    _delay_ms(1000);
 
-                    case MENU_TEMPERATURE:
+                    HAUTO_voidRun();
 
-                        HLCD_voidSendString((u8*)"Temp Selected");
-
-                        break;
-
-
-                    case MENU_SECURITY:
-
-                        HLCD_voidSendString((u8*)"Security Selected");
-
-                        break;
-
-
-                    case MENU_SYSTEM_INFO:
-
-                        HLCD_voidSendString((u8*)"System Info");
-
-                        break;
-
-
-                    default:
-
-                        break;
                 }
 
-                _delay_ms(1000);
+                else if(Local_u8Mode == MODE_MANUAL)
+                {
+                	HLCD_voidClearDisplay();
+                    HLCD_voidGoToPos(ROW1, col1);
+                    HLCD_voidSendString((u8*)"Manual Mode");
+
+                    _delay_ms(1000);
+
+                    HMANUAL_voidRun();
+                }
+
+                Local_u8Mode = HMENU_u8GetMode();
             }
 
 
-            /* LOGOUT */
-
-            else if(Local_u8Mode == MODE_LOGOUT)
+            if(Local_u8Mode == MODE_LOGOUT)
             {
                 HLCD_voidClearDisplay();
 
@@ -148,8 +115,6 @@ int main(void)
             }
         }
 
-
-        /* WRONG PASSWORD */
 
         else
         {

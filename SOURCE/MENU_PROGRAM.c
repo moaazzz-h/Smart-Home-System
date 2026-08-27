@@ -33,12 +33,15 @@ u8 HMENU_u8GetSelection(void)
     HLCD_voidGoToPos(ROW3, col1);
     HLCD_voidSendString((u8*)"3.Security 4.Info");
 
+    HLCD_voidGoToPos(ROW4, col1);
+    HLCD_voidSendString((u8*)"5.Back");
+
 
     while(1)
     {
         Local_u8Key = HKEYPAD_u8GetPressedKey();
 
-        if(Local_u8Key >= '1' && Local_u8Key <= '4')
+        if(Local_u8Key >= '1' && Local_u8Key <= '5')
         {
             return (Local_u8Key - '0');
         }

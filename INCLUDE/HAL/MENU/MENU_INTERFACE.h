@@ -14,6 +14,7 @@
 #define MENU_TEMPERATURE   2
 #define MENU_SECURITY      3
 #define MENU_SYSTEM_INFO   4
+#define MENU_BACK 5
 
 #define MODE_AUTO          1
 #define MODE_MANUAL        2

@@ -12,6 +12,8 @@
 #include "../INCLUDE/HAL/FAN/FAN_INTERFACE.h"
 #include "../INCLUDE/HAL/LDR/LDR_INTERFACE.h"
 #include "../INCLUDE/HAL/LIGHT/LIGHT_INTERFACE.h"
+#include "../INCLUDE/HAL/KEYPAD/KEYPAD_INTERFACE.h"
+#include "../INCLUDE/HAL/LCD/LCD_INTERFACE.h"
 
 // APP
 #include "../INCLUDE/APP/AUTO/AUTO_INTERFACE.h"
@@ -23,6 +25,10 @@ void HAUTO_voidRun(void)
 {
     u8 Local_u8Temperature;
     u8 Local_u8LightLevel;
+    u8 Local_u8Key;
+
+    HLCD_voidGoToPos(ROW4, col1);
+    HLCD_voidSendString((u8*)"Press C: Back");
 
     while(1)
     {
@@ -49,6 +55,12 @@ void HAUTO_voidRun(void)
         else
         {
             HLIGHT_voidOff();
+        }
+
+        Local_u8Key = HKEYPAD_u8GetPressedKey();
+        if(Local_u8Key == 'C')
+        {
+            break;
         }
     }
 }
