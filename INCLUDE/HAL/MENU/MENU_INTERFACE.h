@@ -15,6 +15,11 @@
 #define MENU_SECURITY      3
 #define MENU_SYSTEM_INFO   4
 
+#define MODE_AUTO          1
+#define MODE_MANUAL        2
+#define MODE_LOGOUT        0
+
 u8 HMENU_u8GetSelection(void);
+u8 HMENU_u8GetMode(void);
 
 #endif /* INCLUDE_HAL_MENU_MENU_INTERFACE_H_ */

@@ -1,8 +1,8 @@
 /*
  * TIMER1_CFG.h
  *
- *  Created on: Aug 26, 2026
- *      Author: DELL
+ *  Created on: Aug 27, 2026
+ *      Author: HP
  */
 
 #ifndef INCLUDE_MCAL_TIMER_TIMER1_TIMER1_CFG_H_
@@ -39,5 +39,6 @@
 #define TIMER1_COMPA_INT_EN     0
 #define TIMER1_COMPB_INT_EN     0
 #define TIMER1_CAPT_INT_EN      0
+
 
 #endif /* INCLUDE_MCAL_TIMER_TIMER1_TIMER1_CFG_H_ */

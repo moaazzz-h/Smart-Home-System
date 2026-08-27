@@ -13,6 +13,7 @@
 #define PASSWORD_WRONG         0
 #define PASSWORD_MAX_ATTEMPTS    3
 
-u8 HPASSWORD_u8CheckPassword(void);
+u8 HPASSWORD_u8SelectUser(void);
+u8 HPASSWORD_u8CheckPassword(u8 Copy_u8User);
 
 #endif /* INCLUDE_HAL_PASSWORD_PASSWORD_INTERFACE_H_ */

@@ -9,5 +9,8 @@
 #define INCLUDE_HAL_LM35_LM35_INTERFACE_H_
 
 u8 HLM35_u8GetTemperature(void);
+u8 HLM35_u8GetMaxTemperature(void);
+u8 HLM35_u8GetMinTemperature(void);
+void HLM35_voidDisplayOnLCD(void);
 
 #endif /* INCLUDE_HAL_LM35_LM35_INTERFACE_H_ */

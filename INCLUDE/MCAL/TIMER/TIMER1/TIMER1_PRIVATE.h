@@ -1,8 +1,8 @@
 /*
  * TIMER1_PRIVATE.h
  *
- *  Created on: Aug 26, 2026
- *      Author: DELL
+ *  Created on: Aug 27, 2026
+ *      Author: HP
  */
 
 #ifndef INCLUDE_MCAL_TIMER_TIMER1_TIMER1_PRIVATE_H_
@@ -22,6 +22,5 @@
 #define ICR1   (*(volatile u16 *)0x46)
 #define TIMSK  (*(volatile u8 *)0x59)
 #define TIFR   (*(volatile u8 *)0x58)
-
 
 #endif /* INCLUDE_MCAL_TIMER_TIMER1_TIMER1_PRIVATE_H_ */

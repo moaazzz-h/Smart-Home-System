@@ -1,8 +1,8 @@
 /*
  * TIMER1_PROGRAM.c
  *
- *  Created on: Aug 26, 2026
- *      Author: DELL
+ *  Created on: Aug 27, 2026
+ *      Author: HP
  */
 
 //library Directives
@@ -16,7 +16,7 @@
 
 void MTIMERS_voidTimer1Init(void)
 {
-    // 1. إعداد مسجل TCCR1A بناءً على ملف الـ Config
+
     #if TIMER1_COM1A1 == 1
         SET_BIT(TCCR1A, 7);
     #else
@@ -65,7 +65,6 @@ void MTIMERS_voidTimer1Init(void)
         CLR_BIT(TCCR1A, 0);
     #endif
 
-    // 2. إعداد مسجل TCCR1B (وضع التشغيل والـ Prescaler)
     #if TIMER1_ICNC1 == 1
         SET_BIT(TCCR1B, 7);
     #else
@@ -108,7 +107,7 @@ void MTIMERS_voidTimer1Init(void)
         CLR_BIT(TCCR1B, 0);
     #endif
 
-    // 3. ضبط الـ TOP ليكون التردد 50Hz بدقة عالية (ICR1 = 19999) للكريستال 8MHz
+
     ICR1 = 19999;
 }
 

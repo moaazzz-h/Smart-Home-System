@@ -4,6 +4,7 @@
 
 // MCAL
 #include "../INCLUDE/MCAL/DIO/DIO_INTERFACE.h"
+#include "../INCLUDE/MCAL/ADC/ADC_INTERFACE.h"
 
 // HAL
 #include "../INCLUDE/HAL/LCD/LCD_INTERFACE.h"
@@ -11,80 +12,160 @@
 #include "../INCLUDE/HAL/PASSWORD/PASSWORD_INTERFACE.h"
 #include "../INCLUDE/HAL/MENU/MENU_INTERFACE.h"
 #include "../INCLUDE/HAL/BUZZER/BUZZER_INTERFACE.h"
-
+#include "../INCLUDE/HAL/SERVO_MOTOR/SERVO_INTERFACE.h"
+#include "../INCLUDE/HAL/FAN/FAN_INTERFACE.h"
+#include "../INCLUDE/HAL/LIGHT/LIGHT_INTERFACE.h"
+#include "../INCLUDE/APP/AUTO/AUTO_INTERFACE.h"
 
 int main(void)
 {
+    u8 Local_u8User;
     u8 Local_u8PasswordState;
     u8 Local_u8Selection;
+    u8 Local_u8Mode;
     u8 Local_u8Attempts = 0;
 
-
     MDIO_voidInit();
+    MADC_voidInit();
+
     HLCD_voidInit();
     KPAD_voidInit();
     HBUZZER_voidInit();
 
+    HSERVO_voidInit();
+    HFAN_voidInit();
+    HLIGHT_voidInit();
+
+    HFAN_voidOff();
+    HLIGHT_voidOff();
+    HSERVO_voidSetAngle(0);
+
 
     while(1)
     {
-        Local_u8PasswordState = HPASSWORD_u8CheckPassword();
+
+        Local_u8User = HPASSWORD_u8SelectUser();
+
+        Local_u8PasswordState = HPASSWORD_u8CheckPassword(Local_u8User);
 
 
         if(Local_u8PasswordState == PASSWORD_CORRECT)
         {
             Local_u8Attempts = 0;
 
-            Local_u8Selection = HMENU_u8GetSelection();
-
             HLCD_voidClearDisplay();
 
-            switch(Local_u8Selection)
-            {
-                case MENU_LIGHTS:
-                    HLCD_voidSendString("Lights Selected");
-                    break;
+            HLCD_voidGoToPos(ROW1, col1);
+            HLCD_voidSendString((u8*)"Access Granted");
 
-                case MENU_TEMPERATURE:
-                    HLCD_voidSendString("Temp Selected");
-                    break;
+            HLCD_voidGoToPos(ROW2, col1);
+            HLCD_voidSendString((u8*)"Opening Door...");
 
-                case MENU_SECURITY:
-                    HLCD_voidSendString("Security Selected");
-                    break;
-
-                case MENU_SYSTEM_INFO:
-                    HLCD_voidSendString("System Info");
-                    break;
-
-                default:
-                    break;
-            }
+            HSERVO_voidSetAngle(90);
 
             _delay_ms(1000);
+
+
+            Local_u8Mode = HMENU_u8GetMode();
+
+
+            if(Local_u8Mode == MODE_AUTO)
+            {
+                HLCD_voidClearDisplay();
+
+                HLCD_voidGoToPos(ROW1, col1);
+                HLCD_voidSendString((u8*)"Auto Mode");
+
+                HLCD_voidGoToPos(ROW2, col1);
+                HLCD_voidSendString((u8*)"System Running");
+
+                _delay_ms(1000);
+
+                HAUTO_voidRun();
+
+            }
+
+
+            /* MANUAL MODE */
+
+            else if(Local_u8Mode == MODE_MANUAL)
+            {
+                Local_u8Selection = HMENU_u8GetSelection();
+
+                HLCD_voidClearDisplay();
+
+                switch(Local_u8Selection)
+                {
+                    case MENU_LIGHTS:
+
+                        HLCD_voidSendString((u8*)"Lights Selected");
+
+                        break;
+
+
+                    case MENU_TEMPERATURE:
+
+                        HLCD_voidSendString((u8*)"Temp Selected");
+
+                        break;
+
+
+                    case MENU_SECURITY:
+
+                        HLCD_voidSendString((u8*)"Security Selected");
+
+                        break;
+
+
+                    case MENU_SYSTEM_INFO:
+
+                        HLCD_voidSendString((u8*)"System Info");
+
+                        break;
+
+
+                    default:
+
+                        break;
+                }
+
+                _delay_ms(1000);
+            }
+
+
+            /* LOGOUT */
+
+            else if(Local_u8Mode == MODE_LOGOUT)
+            {
+                HLCD_voidClearDisplay();
+
+                HLCD_voidGoToPos(ROW1, col1);
+                HLCD_voidSendString((u8*)"Logging Out...");
+
+                HSERVO_voidSetAngle(0);
+
+                _delay_ms(1000);
+            }
         }
 
+
+        /* WRONG PASSWORD */
 
         else
         {
             Local_u8Attempts++;
 
-
             HBUZZER_voidBeep();
-
-
-
 
             HLCD_voidClearDisplay();
 
             HLCD_voidGoToPos(ROW1, col1);
-            HLCD_voidSendString("Wrong Password");
+            HLCD_voidSendString((u8*)"Wrong Password");
 
             HLCD_voidGoToPos(ROW2, col1);
-            HLCD_voidSendString("Attempt: ");
+            HLCD_voidSendString((u8*)"Attempt: ");
 
             HLCD_voidDisplayNumberUNSigned(Local_u8Attempts);
-
 
             _delay_ms(1000);
 
@@ -94,21 +175,23 @@ int main(void)
                 HLCD_voidClearDisplay();
 
                 HLCD_voidGoToPos(ROW1, col1);
-                HLCD_voidSendString("Access Denied");
+                HLCD_voidSendString((u8*)"Access Denied");
 
 
-
-                for(u8 Local_u8Counter = 0 ; Local_u8Counter < 5 ; Local_u8Counter++){
-                	HBUZZER_voidBeep();
-                	_delay_ms(200);
+                for(u8 Local_u8Counter = 0;
+                    Local_u8Counter < 5;
+                    Local_u8Counter++)
+                {
+                    HBUZZER_voidBeep();
+                    _delay_ms(200);
                 }
 
                 Local_u8Attempts = 0;
+
+                _delay_ms(1000);
             }
         }
     }
 
-
     return 0;
-
 }
