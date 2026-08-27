@@ -11,5 +11,5 @@
 u8 HKEYPAD_u8GetPressedKey(void);
 void KPAD_voidInit(void);
 
-
+#define   KPAD_NOT_PRESSED  0
 #endif /* INCLUDE_HAL_KEYPAD_KEYPAD_INTERFACE_H_ */

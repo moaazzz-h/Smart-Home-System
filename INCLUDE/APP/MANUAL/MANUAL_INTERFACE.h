@@ -1,0 +1,13 @@
+/*
+ * MANUAL_INTERFACE.h
+ *
+ *  Created on: Aug 27, 2026
+ *      Author: DELL
+ */
+
+#ifndef INCLUDE_APP_MANUAL_MANUAL_INTERFACE_H_
+#define INCLUDE_APP_MANUAL_MANUAL_INTERFACE_H_
+
+void HMANUAL_voidRun(void);
+
+#endif /* INCLUDE_APP_MANUAL_MANUAL_INTERFACE_H_ */

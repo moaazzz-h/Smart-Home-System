@@ -16,6 +16,7 @@
 #include "../INCLUDE/HAL/FAN/FAN_INTERFACE.h"
 #include "../INCLUDE/HAL/LIGHT/LIGHT_INTERFACE.h"
 #include "../INCLUDE/APP/AUTO/AUTO_INTERFACE.h"
+#include "../INCLUDE/APP/MANUAL/MANUAL_INTERFACE.h"
 
 int main(void)
 {
@@ -90,46 +91,12 @@ int main(void)
 
             else if(Local_u8Mode == MODE_MANUAL)
             {
-                Local_u8Selection = HMENU_u8GetSelection();
+            	HLCD_voidClearDisplay();
+                HLCD_voidGoToPos(ROW1, col1);
+                HLCD_voidSendString((u8*)"Manual Mode");
+                 _delay_ms(1000);
 
-                HLCD_voidClearDisplay();
-
-                switch(Local_u8Selection)
-                {
-                    case MENU_LIGHTS:
-
-                        HLCD_voidSendString((u8*)"Lights Selected");
-
-                        break;
-
-
-                    case MENU_TEMPERATURE:
-
-                        HLCD_voidSendString((u8*)"Temp Selected");
-
-                        break;
-
-
-                    case MENU_SECURITY:
-
-                        HLCD_voidSendString((u8*)"Security Selected");
-
-                        break;
-
-
-                    case MENU_SYSTEM_INFO:
-
-                        HLCD_voidSendString((u8*)"System Info");
-
-                        break;
-
-
-                    default:
-
-                        break;
-                }
-
-                _delay_ms(1000);
+                HMANUAL_voidRun();
             }
 
 
