@@ -4,7 +4,7 @@
 
 A password-protected smart home control system based on the **ATmega32 microcontroller**.
 
-The system is designed to combine manual and automatic control of home appliances, temperature monitoring, door access control, and security alarms through a **4x4 keypad** and **16x2 LCD**.
+The system is designed to combine manual and automatic control of home appliances, temperature monitoring, door access control, and security alarms through a **4x4 keypad** and **20x4 LCD**.
 
 ---
 
